@@ -1,0 +1,225 @@
+SQL> create table deposit(
+  2  act_no varchar2(5),
+  3  c_name varchar2(15),
+  4  b_name varchar2(15),
+  5  amount number(9,2),
+  6  adate date
+  7  );
+
+Table created.
+
+SQL> desc deposit;
+ Name                                      Null?    Type
+ ----------------------------------------- -------- ----------------------------
+ ACT_NO                                             VARCHAR2(5)
+ C_NAME                                             VARCHAR2(15)
+ B_NAME                                             VARCHAR2(15)
+ AMOUNT                                             NUMBER(9,2)
+ ADATE                                              DATE
+
+SQL> insert into deposit values(100,'anil','vrce',1000.00,'01-mar-95');
+
+1 row created.
+
+SQL> insert into deposit values(101,'sunil','ajni',5000.00,'04-jan-96');
+
+1 row created.
+
+SQL> insert into deposit values(101,'mehul','karolbagh',3500.00,'17-nov-95');
+
+1 row created.
+
+SQL> insert into deposit values(104,'madhuri','chandi',1200.00,'17-nov-95');
+
+1 row created.
+
+SQL> insert into deposit values(150,'prmod','mg road',3000,'27-mar-96');
+
+1 row created.
+
+SQL> insert into deposit values(106,'sandip','andheri',2000.20,'31-mar-96');
+
+1 row created.
+
+SQL> insert into deposit values(107,'shivani','virar',1000.00,'05-sep-95');
+
+1 row created.
+
+SQL> select * from deposit;
+
+ACT_N C_NAME          B_NAME              AMOUNT ADATE                          
+----- --------------- --------------- ---------- ---------                      
+100   anil            vrce                  1000 01-MAR-95                      
+101   sunil           ajni                  5000 04-JAN-96                      
+101   mehul           karolbagh             3500 17-NOV-95                      
+104   madhuri         chandi                1200 17-NOV-95                      
+150   prmod           mg road               3000 27-MAR-96                      
+106   sandip          andheri             2000.2 31-MAR-96                      
+107   shivani         virar                 1000 05-SEP-95                      
+
+7 rows selected.
+
+SQL> create table branch(
+  2  n_name varchar2(15),
+  3  city varchar2(15)
+  4  );
+
+Table created.
+
+SQL> desc branch;
+ Name                                      Null?    Type
+ ----------------------------------------- -------- ----------------------------
+ N_NAME                                             VARCHAR2(15)
+ CITY                                               VARCHAR2(15)
+
+SQL> insert into branch values('vrce','nagpur');
+
+1 row created.
+
+SQL> insert into branch values('ajni','nagpur');
+
+1 row created.
+
+SQL> insert into branch values('karolbagh', 'delhi');
+
+1 row created.
+
+SQL> insert into branch values('chandi','delhi');
+
+1 row created.
+
+SQL> insert into branch values('dharampeth','nagpur');
+
+1 row created.
+
+SQL> insert into branch values('m g road','bangloare');
+
+1 row created.
+
+SQL> select *from branch;
+
+N_NAME          CITY                                                            
+--------------- ---------------                                                 
+vrce            nagpur                                                          
+ajni            nagpur                                                          
+karolbagh       delhi                                                           
+chandi          delhi                                                           
+dharampeth      nagpur                                                          
+m g road        bangloare                                                       
+
+6 rows selected.
+
+SQL> create table customers(
+  2  c_name varchar2(15),
+  3  city varchar2(15)
+  4  );
+
+Table created.
+
+SQL> insert into customers values('anil','calcutta');
+
+1 row created.
+
+SQL> insert into customers values('sunil', 'delhi');
+
+1 row created.
+
+SQL> insert into customers values('mehul','baroda');
+
+1 row created.
+
+SQL> insert into customers values('mandar','patna');
+
+1 row created.
+
+SQL> insert into customers values('madhuri','nagpur');
+
+1 row created.
+
+SQL> insert into customers values('pramod','nagpur');
+
+1 row created.
+
+SQL> insert into customers values('sandip','surat');
+
+1 row created.
+
+SQL> insert into customers values('shivani','bombay');
+
+1 row created.
+
+SQL> select * from customers;
+
+C_NAME          CITY                                                            
+--------------- ---------------                                                 
+anil            calcutta                                                        
+sunil           delhi                                                           
+mehul           baroda                                                          
+mandar          patna                                                           
+madhuri         nagpur                                                          
+pramod          nagpur                                                          
+sandip          surat                                                           
+shivani         bombay                                                          
+
+8 rows selected.
+
+SQL> create table bororw(
+  2  loanno varchar2(5),
+  3  c_name varchar2(15),
+  4  b_name varchar2(15),
+  5  amount number(9,2)
+  6  );
+
+Table created.
+
+SQL> desc bororw;
+ Name                                      Null?    Type
+ ----------------------------------------- -------- ----------------------------
+ LOANNO                                             VARCHAR2(5)
+ C_NAME                                             VARCHAR2(15)
+ B_NAME                                             VARCHAR2(15)
+ AMOUNT                                             NUMBER(9,2)
+
+SQL> insert into bororw values(201,'anil','vrce',1000.00);
+
+1 row created.
+
+SQL> insert into bororw values(206,'mehul', 'ajni',5000.00);
+
+1 row created.
+
+SQL> insert into bororw values(311,'sunil','dharmpeth',3000.00);
+
+1 row created.
+
+SQL> insert into bororw values(321,'madhuri','andheri',2000.00);
+
+1 row created.
+
+SQL> insert into bororw values(375,'prmod','virar',8000.00);
+
+1 row created.
+
+SQL> insert into bororw values(481,'kranti','nuhru place','3000.00);
+ERROR:
+ORA-01756: quoted string not properly terminated 
+
+
+SQL> insert into bororw values(481,'kranti','nuhru place',3000.00);
+
+1 row created.
+
+SQL> select * from bororw;
+
+LOANN C_NAME          B_NAME              AMOUNT                                
+----- --------------- --------------- ----------                                
+201   anil            vrce                  1000                                
+206   mehul           ajni                  5000                                
+311   sunil           dharmpeth             3000                                
+321   madhuri         andheri               2000                                
+375   prmod           virar                 8000                                
+481   kranti          nuhru place           3000                                
+
+6 rows selected.
+
+SQL> spool off
