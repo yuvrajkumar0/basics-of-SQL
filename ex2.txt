@@ -1,0 +1,282 @@
+SQL> select * from item_master
+  2  
+SQL> select * from item_master;
+
+        ID NAME                 TYPE                      PRICE                 
+---------- -------------------- -------------------- ----------                 
+QUALITY              ITEM_PACK                                                  
+-------------------- ---------                                                  
+        11 dairymilk            chocolate                   500                 
+good                 12-AUG-00                                                  
+                                                                                
+        12 kajukatri            mithai                     1000                 
+verygood             15-JAN-16                                                  
+                                                                                
+        13 pizza                fastfood                    350                 
+average              20-FEB-15                                                  
+                                                                                
+
+        ID NAME                 TYPE                      PRICE                 
+---------- -------------------- -------------------- ----------                 
+QUALITY              ITEM_PACK                                                  
+-------------------- ---------                                                  
+        14 orangejuice          juice                        50                 
+best                 05-FEB-16                                                  
+                                                                                
+        15 vanilla_cack         bakery item                2000                 
+good                 01-JAN-16                                                  
+                                                                                
+
+SQL> select price,quality,item_pack_date
+  2  from * item_master;
+from * item_master
+     *
+ERROR at line 2:
+ORA-00903: invalid table name 
+
+
+SQL> from * item_master;
+SP2-0734: unknown command beginning "from * ite..." - rest of line ignored.
+SQL> select type
+  2  from item_master;
+
+TYPE                                                                            
+--------------------                                                            
+chocolate                                                                       
+mithai                                                                          
+fastfood                                                                        
+juice                                                                           
+bakery item                                                                     
+
+SQL> select price,quality,item_pack_date
+  2  from * item_master;
+from * item_master
+     *
+ERROR at line 2:
+ORA-00903: invalid table name 
+
+
+SQL> from item_master;
+SP2-0734: unknown command beginning "from item_..." - rest of line ignored.
+SQL> select price,quality,item_pack_date
+  2  from item_master;
+
+     PRICE QUALITY              ITEM_PACK                                       
+---------- -------------------- ---------                                       
+       500 good                 12-AUG-00                                       
+      1000 verygood             15-JAN-16                                       
+       350 average              20-FEB-15                                       
+        50 best                 05-FEB-16                                       
+      2000 good                 01-JAN-16                                       
+
+SQL> select quality
+  2  from item_master;
+
+QUALITY                                                                         
+--------------------                                                            
+good                                                                            
+verygood                                                                        
+average                                                                         
+best                                                                            
+good                                                                            
+
+SQL> select * from item_master order by quality;
+
+        ID NAME                 TYPE                      PRICE                 
+---------- -------------------- -------------------- ----------                 
+QUALITY              ITEM_PACK                                                  
+-------------------- ---------                                                  
+        13 pizza                fastfood                    350                 
+average              20-FEB-15                                                  
+                                                                                
+        14 orangejuice          juice                        50                 
+best                 05-FEB-16                                                  
+                                                                                
+        15 vanilla_cack         bakery item                2000                 
+good                 01-JAN-16                                                  
+                                                                                
+
+        ID NAME                 TYPE                      PRICE                 
+---------- -------------------- -------------------- ----------                 
+QUALITY              ITEM_PACK                                                  
+-------------------- ---------                                                  
+        11 dairymilk            chocolate                   500                 
+good                 12-AUG-00                                                  
+                                                                                
+        12 kajukatri            mithai                     1000                 
+verygood             15-JAN-16                                                  
+                                                                                
+
+SQL> select quality from item_master where quality ='verygood';
+
+QUALITY                                                                         
+--------------------                                                            
+verygood                                                                        
+
+SQL> update item_master set quality ='very good' where quality ='good';
+
+2 rows updated.
+
+SQL> select * from item_master;
+
+        ID NAME                 TYPE                      PRICE                 
+---------- -------------------- -------------------- ----------                 
+QUALITY              ITEM_PACK                                                  
+-------------------- ---------                                                  
+        11 dairymilk            chocolate                   500                 
+very good            12-AUG-00                                                  
+                                                                                
+        12 kajukatri            mithai                     1000                 
+verygood             15-JAN-16                                                  
+                                                                                
+        13 pizza                fastfood                    350                 
+average              20-FEB-15                                                  
+                                                                                
+
+        ID NAME                 TYPE                      PRICE                 
+---------- -------------------- -------------------- ----------                 
+QUALITY              ITEM_PACK                                                  
+-------------------- ---------                                                  
+        14 orangejuice          juice                        50                 
+best                 05-FEB-16                                                  
+                                                                                
+        15 vanilla_cack         bakery item                2000                 
+very good            01-JAN-16                                                  
+                                                                                
+
+SQL> select quality from item_master where quality ='very good';
+
+QUALITY                                                                         
+--------------------                                                            
+very good                                                                       
+very good                                                                       
+
+SQL> alter item_master add item_pur_date;
+alter item_master add item_pur_date
+      *
+ERROR at line 1:
+ORA-00940: invalid ALTER command 
+
+
+SQL> alter item_master add item_pur_date date;
+alter item_master add item_pur_date date
+      *
+ERROR at line 1:
+ORA-00940: invalid ALTER command 
+
+
+SQL> alter table item_master add item_pur_date date;
+
+Table altered.
+
+SQL> select * from item_master;
+
+        ID NAME                 TYPE                      PRICE                 
+---------- -------------------- -------------------- ----------                 
+QUALITY              ITEM_PACK ITEM_PUR_                                        
+-------------------- --------- ---------                                        
+        11 dairymilk            chocolate                   500                 
+very good            12-AUG-00                                                  
+                                                                                
+        12 kajukatri            mithai                     1000                 
+verygood             15-JAN-16                                                  
+                                                                                
+        13 pizza                fastfood                    350                 
+average              20-FEB-15                                                  
+                                                                                
+
+        ID NAME                 TYPE                      PRICE                 
+---------- -------------------- -------------------- ----------                 
+QUALITY              ITEM_PACK ITEM_PUR_                                        
+-------------------- --------- ---------                                        
+        14 orangejuice          juice                        50                 
+best                 05-FEB-16                                                  
+                                                                                
+        15 vanilla_cack         bakery item                2000                 
+very good            01-JAN-16                                                  
+                                                                                
+
+SQL> select * item_master where price>500;
+select * item_master where price>500
+         *
+ERROR at line 1:
+ORA-00923: FROM keyword not found where expected 
+
+
+SQL> select * from item_master where price>500;
+
+        ID NAME                 TYPE                      PRICE                 
+---------- -------------------- -------------------- ----------                 
+QUALITY              ITEM_PACK ITEM_PUR_                                        
+-------------------- --------- ---------                                        
+        12 kajukatri            mithai                     1000                 
+verygood             15-JAN-16                                                  
+                                                                                
+        15 vanilla_cack         bakery item                2000                 
+very good            01-JAN-16                                                  
+                                                                                
+
+SQL> delete * from item_master where price=50;
+delete * from item_master where price=50
+       *
+ERROR at line 1:
+ORA-00903: invalid table name 
+
+
+SQL> delete from item_master where price=50;
+
+1 row deleted.
+
+SQL> select * from item_master;
+
+        ID NAME                 TYPE                      PRICE                 
+---------- -------------------- -------------------- ----------                 
+QUALITY              ITEM_PACK ITEM_PUR_                                        
+-------------------- --------- ---------                                        
+        11 dairymilk            chocolate                   500                 
+very good            12-AUG-00                                                  
+                                                                                
+        12 kajukatri            mithai                     1000                 
+verygood             15-JAN-16                                                  
+                                                                                
+        13 pizza                fastfood                    350                 
+average              20-FEB-15                                                  
+                                                                                
+
+        ID NAME                 TYPE                      PRICE                 
+---------- -------------------- -------------------- ----------                 
+QUALITY              ITEM_PACK ITEM_PUR_                                        
+-------------------- --------- ---------                                        
+        15 vanilla_cack         bakery item                2000                 
+very good            01-JAN-16                                                  
+                                                                                
+
+SQL> rename item_master to item_detail;
+
+Table renamed.
+
+SQL> select * from item_detail;
+
+        ID NAME                 TYPE                      PRICE                 
+---------- -------------------- -------------------- ----------                 
+QUALITY              ITEM_PACK ITEM_PUR_                                        
+-------------------- --------- ---------                                        
+        11 dairymilk            chocolate                   500                 
+very good            12-AUG-00                                                  
+                                                                                
+        12 kajukatri            mithai                     1000                 
+verygood             15-JAN-16                                                  
+                                                                                
+        13 pizza                fastfood                    350                 
+average              20-FEB-15                                                  
+                                                                                
+
+        ID NAME                 TYPE                      PRICE                 
+---------- -------------------- -------------------- ----------                 
+QUALITY              ITEM_PACK ITEM_PUR_                                        
+-------------------- --------- ---------                                        
+        15 vanilla_cack         bakery item                2000                 
+very good            01-JAN-16                                                  
+                                                                                
+
+SQL> spool off;
